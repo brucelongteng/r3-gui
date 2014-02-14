@@ -5,8 +5,8 @@ REBOL [
     url: http://www.rm-asset.com/code/downloads/
     history: http://www.rm-asset.com/code/level1/r3-gui/
     license: http://www.rebol.com/r3/rsl.html
-    version: 5134
-    date: 19-Jul-2013/9:39:15+2:00
+    version: ""
+    date: 14-Feb-2014/10:28:39-5:00
     purpose: "REBOL 3 GUI module"
 ]
 context [
@@ -3782,7 +3782,7 @@ make object! [
                 s-talign: m-talign: e-talign:
                 s-lalign: m-lalign: e-lalign:
             ] group-modes/:layout-mode
-            phys-pixel: 1x1 / gui-metric 'unit-size
+            phys-pixel: 1x1 / gui-metric 'log-size
             phys-pixel-l: phys-pixel/:l
             phys-pixel-t: phys-pixel/:t
             source: init-pane/:t
@@ -3948,7 +3948,7 @@ make object! [
             size: viewport-box/bottom-right
             rows: length? row-minification-index
             columns: length? column-minification-index
-            phys-pixel: 1x1 / gui-metric 'unit-size
+            phys-pixel: 1x1 / gui-metric 'log-size
             heights: head insert/dup copy [] none rows
             row-offsets: head insert/dup copy [] none rows
             source: init-pane/y
@@ -4531,7 +4531,7 @@ text-key-map: context [
         #"^X" #"^C"
         #"^V" ignore
         #"^M" ignore
-        delete deslect
+        delete deselect
         delete-end deselect
     ]
 ]
