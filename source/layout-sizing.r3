@@ -981,7 +981,7 @@ make object! [
 				s-lalign: m-lalign: e-lalign:
 			] group-modes/:layout-mode
 
-			phys-pixel: 1x1 / gui-metric 'unit-size
+			phys-pixel: 1x1 / gui-metric 'log-size
 			phys-pixel-l: phys-pixel/:l
 			phys-pixel-t: phys-pixel/:t
 	
@@ -1192,7 +1192,7 @@ make object! [
 			rows: length? row-minification-index 
 			columns: length? column-minification-index
 	
-			phys-pixel: 1x1 / gui-metric 'unit-size
+			phys-pixel: 1x1 / gui-metric 'log-size
 
 			; row resize
 	
