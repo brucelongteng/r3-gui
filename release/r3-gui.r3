@@ -6,7 +6,7 @@ REBOL [
     history: http://www.rm-asset.com/code/level1/r3-gui/
     license: http://www.rebol.com/r3/rsl.html
     version: ""
-    date: 14-Feb-2014/10:28:39-5:00
+    date: 19-Feb-2014/14:39:59-5:00
     purpose: "REBOL 3 GUI module"
 ]
 context [
@@ -4666,7 +4666,21 @@ save-clip-text: func [txt] [
     write clipboard:// to-binary enline txt
 ]
 load-clip-text: does [
-    to-string deline read clipboard://
+    ret: copy ""
+    p: open clipboard://
+    p/awake: func [evt] [
+        if 'read = evt/type [
+            ret: to string! copy evt/port/data
+        ]
+        true
+    ]
+    either none? ret: read p [
+        wait [p 0.5]
+    ] [
+        ret: to string! ret
+    ]
+    close p
+    deline ret
 ]
 make-text: funct [
     {Make a text draw command block, with all necessary attributes.}
