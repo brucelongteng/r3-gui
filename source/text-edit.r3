@@ -132,5 +132,19 @@ save-clip-text: func [txt] [
 ]
 
 load-clip-text: does [
-	to-string deline read clipboard://
+	ret: copy ""
+	p: open clipboard://
+	p/awake: func [evt][
+		if 'read = evt/type [
+			ret: to string! copy evt/port/data  
+		]
+		true
+	]
+	either none? ret: read p [
+		wait [p 0.5]
+	][
+		ret: to string! ret
+	]
+	close p
+	deline ret
 ]
